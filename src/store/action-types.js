@@ -1,7 +1,6 @@
-const INCREMENT = "INCREMENT";
-const DECREMENT = "DECREMENT";
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
 
-const ADD = "ADD";
-const MINUS = "MINUS";
-
-export { INCREMENT, DECREMENT,ADD,MINUS };
+export const ADD_TOTO = "ADD_TOTO";
+export const DEL_TODO = "DEL_TODO";
+export const TOGGLE_TODO = "TOGGLE_TODO";

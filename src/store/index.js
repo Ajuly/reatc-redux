@@ -1,7 +1,9 @@
-import {createStore} from '../redux/index';
-import reducers from './reducers/index';
+import { createStore } from '../redux';
+
+import reducers from './reducers';
 
 let store = createStore(reducers);
+// 方便调试 
 window.store = store;
 
 export default store;

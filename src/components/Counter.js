@@ -1,36 +1,38 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import store from '../store'
+import actions from '../store/actions/counter'
+import {bindActionCreators} from '../redux'
+let newActions = bindActionCreators(actions,store.dispatch);
 
-import * as types from '../store/action-types';
-import store from '../store';
 
-function action(type){
-    store.dispatch({type})
-}
 
 export default class Counter extends Component {
-  constructor(){
+  constructor() {
       super();
       this.state = {number:store.getState().counter.number};
   }
-  componentDidMount = () => {
-    // 订阅
-    this.unsubscribe = store.subscribe((()=>{
+
+  componentWillMount = () => {
+    this.unsubscribe = store.subscribe(()=>{
         this.setState({number:store.getState().counter.number});
-    }));
+    });
   }
 
-  componentWillUnmount = () => {
-    // 取消
-    this.unsubscribe();
+  componentWillUnmount() {
+      this.unsubscribe();// 取消订阅
   }
-  
   
   render() {
     return (
-      <div>
+      <div style={{border:'1px solid #ddd'}}>
         <p>{this.state.number}</p>
-        <button onClick={() => action(types.INCREMENT)}>+</button>
-        <button onClick={() => action(types.DECREMENT)}>-</button>
+        <button onClick={newActions.increment}>+</button>
+        <button onClick={newActions.decrement}>-</button>
+        <button onClick={()=>{
+            setTimeout(() => {
+                newActions.increment()
+            }, 1000);
+        }}>过一秒之后再加</button>
       </div>
     )
   }

@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Counter from './components/Counter';
-import Todos from './components/Todos';
+import Counter2 from './components/Counter2';
 
 ReactDOM.render(
     <div>
         <Counter />
-        <hr />
-        <Todos />
+        <Counter2 />
     </div>,document.querySelector('#root'));
 
 
