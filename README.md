@@ -27,6 +27,13 @@
             return {type:types.DECREMENT}
         }
     }
+## bindActionCreator 
+
+    用来实现 actionCreator 和 dispatch 的绑定
+
+## 将react与redux进行连接 
+
+    react-redux：connect+Provider 的实现
 
     
     
