@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import store from '../store'
 import actions from '../store/actions/counter'
-import * as types from '../store/action-types';
 import {connect} from '../react-redux'
 // import {bindActionCreators} from '../redux'
 // let newActions = bindActionCreators(actions,store.dispatch);
@@ -44,7 +43,7 @@ class Counter extends Component {
 // connect是一个高阶组件函数
 // 把仓库中的状态树映射为当前组件的属性对象
 // 负责输入，就是把仓库中的状态输入到组件
-let mapStateToProps = state => state.counter;
+// let mapStateToProps = state => state.counter;
 // 把store的dispatch方法转换成一个当前组件的属性对象
 // 输出  把用户组件中的操作发射出去
 // 1.写法： 
@@ -59,3 +58,6 @@ export default connect(
     state => state.counter,
     actions
 )(Counter);
+
+
+// connect : state + action/dispatch

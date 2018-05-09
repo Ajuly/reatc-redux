@@ -1,39 +1,39 @@
-// import React,{Component} from 'react';
-// import PropTypes from 'prop-types';
-// import {bindActionCreator} from '../redux';
+// // import React,{Component} from 'react';
+// // import PropTypes from 'prop-types';
+// // import {bindActionCreator} from '../redux';
 
-// export default function (mapStateToProps,mapDispatchToProps) {
-//     return function (Component) {
-//         class WrappedComponent extends Component{
-//             static contextTypes={
-//                 store:PropTypes.object.isRequired
-//             }
-//             constructor(props,context) {
-//                 super(props);
-//                 this.store=context.store;
-//                 this.state=mapStateToProps(this.store.getState());
-//             }
-//             componentDidMount() {
-//                 this.unsubscribe = this.store.subscribe(() => {
-//                     this.setState(mapStateToProps(this.store.getState()));
-//                 });
-//             }
-//             componentWillUnmount() {
-//                 this.unsubscribe();
-//             }
-//             render() {
-//                 let actions={};
-//                 if (typeof mapDispatchToProps == 'object') {
-//                     actions=bindActionCreator(mapDispatchToProps,this.store.dispatch);
-//                 } else {
-//                     actions=mapDispatchToProps(this.store.dispatch);
-//                 }
-//                 return <Component {...this.state}  {...actions}/>
-//             }
-//         }
-//         return WrappedComponent;
-//     }
-// }
+// // export default function (mapStateToProps,mapDispatchToProps) {
+// //     return function (Component) {
+// //         class WrappedComponent extends Component{
+// //             static contextTypes={
+// //                 store:PropTypes.object.isRequired
+// //             }
+// //             constructor(props,context) {
+// //                 super(props);
+// //                 this.store=context.store;
+// //                 this.state=mapStateToProps(this.store.getState());
+// //             }
+// //             componentDidMount() {
+// //                 this.unsubscribe = this.store.subscribe(() => {
+// //                     this.setState(mapStateToProps(this.store.getState()));
+// //                 });
+// //             }
+// //             componentWillUnmount() {
+// //                 this.unsubscribe();
+// //             }
+// //             render() {
+// //                 let actions={};
+// //                 if (typeof mapDispatchToProps == 'object') {
+// //                     actions=bindActionCreator(mapDispatchToProps,this.store.dispatch);
+// //                 } else {
+// //                     actions=mapDispatchToProps(this.store.dispatch);
+// //                 }
+// //                 return <Component {...this.state}  {...actions}/>
+// //             }
+// //         }
+// //         return WrappedComponent;
+// //     }
+// // }
 
 import React,{Component} from 'react';
 import propTypes from 'prop-types';
@@ -49,7 +49,7 @@ export default function(mapStateToProps,mapDispatchToProps){
                 super(props,context);
                 this.store = context.store;
                 // 进行映射
-                this.state = mapStateToProps(this.store.getState());
+                this.state = (this.store.getState());
             }
             componentWillMount = () => {
               this.unsubscribe = this.store.subscribe(()=>{
@@ -63,9 +63,9 @@ export default function(mapStateToProps,mapDispatchToProps){
             
             render(){
                 let actions = {};
-                if(typeof mapDispatchToProps == 'function'){
+                if(typeof mapDispatchToProps === 'function'){
                     actions = mapDispatchToProps(this.store.dispatch);
-                }else if(typeof mapDispatchToProps == 'object'){
+                }else if(typeof mapDispatchToProps === 'object'){
                     actions = bindActionCreators(mapDispatchToProps,this.store.dispatch);
                 }
                 return <WrappedComponent {...this.state} {...actions} />
@@ -74,3 +74,8 @@ export default function(mapStateToProps,mapDispatchToProps){
         return ProxyComponent;
     }
 }
+
+
+// 缓存 
+
+
