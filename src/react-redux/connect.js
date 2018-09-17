@@ -37,8 +37,3 @@ export default function(mapStateToProps,mapDispatchToProps){
         return ProxyComponent;
     }
 }
-
-
-// 缓存 
-
-
